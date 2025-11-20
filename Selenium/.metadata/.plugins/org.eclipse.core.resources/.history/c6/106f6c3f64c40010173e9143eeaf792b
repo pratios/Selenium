@@ -1,0 +1,73 @@
+package orangehrm_package;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Keywords_OrangeHRM {
+
+	static WebDriver driver = new ChromeDriver();
+	
+	public WebElement getElementsOR(String locatorType, String locatorValue) {
+		By by;
+		
+		switch (locatorType) {
+		case "id":
+			by = By.id(locatorValue);
+			break;
+		case "className":
+			by = By.className(locatorValue);
+			break;
+		case "xpath":
+			by = By.xpath(locatorValue);
+			break;
+		case "name":
+			by = By.name(locatorValue);
+			break;
+		default:
+			by = null;
+			break;
+		}
+		WebElement e = driver.findElement(by);
+		return e;
+	}
+	
+	public void openBrowserOR(String url) {
+		driver.get(url);
+//		driver.manage().window().maximize();
+	}
+	
+	public void findElementOR(String locatorType, String locatorValue, String data) {
+		WebElement e = getElementsOR(locatorType, locatorValue);
+		e.sendKeys(data);
+	}
+	
+	public void findElementWaitOR(String locatorType, String locatorValue, String data) {
+		waits();
+		WebElement e = getElementsOR(locatorType, locatorValue);
+		e.sendKeys(data);
+	}
+	
+	public void clickButtonOR(String locatorType, String locatorValue) {
+		WebElement e = getElementsOR(locatorType, locatorValue);
+		e.click();
+		waits();
+	}
+	
+	public void clickButtonWaitOR(String locatorType, String locatorValue) {
+		waits();
+		WebElement e = getElementsOR(locatorType, locatorValue);
+		e.click();
+		waits();
+	}
+	
+	public void waits() {
+		try {
+			Thread.sleep(4000);
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println("Exception for wait : "+e.getMessage());
+		}
+	}
+}

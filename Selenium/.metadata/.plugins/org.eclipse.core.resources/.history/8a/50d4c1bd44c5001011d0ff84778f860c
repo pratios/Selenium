@@ -1,0 +1,118 @@
+package CucumberTest;
+
+import org.testng.annotations.Test;
+
+import io.cucumber.java.en.Given;
+
+import org.testng.annotations.BeforeTest;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.AfterTest;
+
+public class Steps {
+	
+
+WebDriver driver;	
+
+	  @BeforeTest
+	  public void beforeTest() {
+		  driver=new ChromeDriver();
+	  }
+
+	  @Given("Open Browser And Enter Login url={string}")	
+	  public void OpenBrowser(String url) {
+	  driver.get( url );
+	  driver.manage().window().maximize();
+  }
+  
+@Given("Enter Email Address={string}")
+	  public void LoginTest(String email) {
+	  WebElement e=driver.findElement(By.id("email_address"));
+	  e.sendKeys(email);
+	  wait1();
+//	  e.clear();
+//	  e.sendKeys("yuvraj.gadadare@gmail.com");
+//	  WebElement p=driver.findElement(By.id("password"));
+//	  p.sendKeys("pp");
+//	  WebElement btn=driver.findElement(By.xpath("//*[@type='submit']"));
+//	  btn.click();
+//	  wait1();
+  }
+  
+//  @Test(priority=3)
+  @Test(enabled = false)
+  public void profile() {
+	  WebElement pf = driver.findElement(By.xpath("//*[@href=\"/Student/Profile\"]"));
+	  pf.click();
+	  wait1();
+	  WebElement b1= driver.findElement(By.xpath("//*[@class='btn btn-primary ms-4']"));
+	  b1.click();
+	  wait1();
+  }
+  
+  @Test(priority=3)
+//  @Test(enabled = false)
+  public void atten() {
+	  WebElement e = driver.findElement(By.xpath("//*[@onclick='ViewAttendance(1,329)']"));
+	  e.click();
+	  wait1();
+	  WebElement g = driver.findElement(By.xpath("//*[@class='btn btn-secondary']"));
+	  g.click();
+	  wait1();
+  }
+  
+//  @Test(priority=4)
+//  public void exam() {
+//	  WebElement e = driver.findElement(By.xpath("//*[@href=\"/BatchExam/ViewBatchExam/6\"]"));
+//	  e.click();
+//	  wait1();
+//	  WebElement c = driver.findElement(By.xpath("//*[@class='table table-bordered']/tbody/tr[4]/td[2]/b"));
+//	  System.out.println("-------------------"+c.getText()+"------------------------"); ;
+////	  wait1();
+//  }
+  
+  @Test(priority = 4)
+//  @Test(enabled = false)
+  public void changePwd() {
+	  WebElement cp =driver.findElement(By.xpath("//*[@onclick='OpenModalToChangePassword()']"));
+	  cp.click();
+	  wait1();
+	  WebElement e = driver.findElement(By.id("txtcurrent_password"));
+	  e.sendKeys("11");
+	  WebElement n = driver.findElement(By.id("txtnew_password"));
+	  n.sendKeys("11");
+	  WebElement o = driver.findElement(By.id("txtconfirm_new_password"));
+	  o.sendKeys("11");
+	  WebElement b = driver.findElement(By.id("btnchangepassword"));
+	  b.click();
+	  wait1();
+	  driver.switchTo().alert().accept();
+
+  }
+  
+//  @Test(priority = 4)
+  @Test(enabled = false)
+  public void LogOutTest() {
+	  wait1();
+	  WebElement e = driver.findElement(By.xpath("//*[@id=\"navbarCollapse2\"]/div/a[2]"));
+	  e.click();
+  }
+  
+  @AfterTest
+  public void afterTest() {
+	  wait1();
+	  driver.close();
+  }
+
+  private void wait1() {
+	  try {
+			Thread.sleep(4000);
+		} catch (InterruptedException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+  }
+  
+}

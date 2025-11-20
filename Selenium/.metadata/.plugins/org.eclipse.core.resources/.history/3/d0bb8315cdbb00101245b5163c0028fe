@@ -1,0 +1,10 @@
+package SeleniumFirstPackage;
+
+public class SeleniumProgram {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

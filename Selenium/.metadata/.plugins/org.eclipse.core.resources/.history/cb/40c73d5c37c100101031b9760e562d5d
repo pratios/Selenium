@@ -1,0 +1,82 @@
+package QAPlayGround;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+public class PGButtonManipulation {
+
+	WebDriver driver;
+	
+	@FindBy(xpath="//*[@class='button-section']/a")
+	WebElement FirstButton;
+	
+	@FindBy(xpath="(//*[@href=\"/practice\"])[3]/button")
+	WebElement SecondButton;
+	
+	@FindBy(xpath="//*[@href=\"/practice/button\"]")
+	WebElement ThirdButton;
+	
+	@FindBy(id="button-xyCordinate")
+	WebElement LocationButton;
+	
+	@FindBy(id="button-color")
+	WebElement GetColor;
+	
+	@FindBy(id="button-heightWidth")
+	WebElement GetSize;
+	
+	@FindBy(id="button-disabled")
+	WebElement GetEnabled;
+	
+	public PGButtonManipulation(WebDriver driver) {
+		// TODO Auto-generated constructor stub
+		this.driver = driver;
+		PageFactory.initElements(this.driver, this);
+	}
+	
+	public void setUrl(String url) {
+		driver.get(url);
+		driver.manage().window().maximize();
+	}
+	
+	public void Location() {
+		System.out.println("Location : "+LocationButton.getLocation());
+	}
+	
+	public void GetCSS() {
+		System.out.println("Color is "+GetColor.getCssValue("color"));
+	}
+	public void getSize() {
+		System.out.println("Size is "+GetSize.getSize());
+	}
+	public void getEnabled() {
+		System.out.println("Button is "+GetEnabled.isEnabled());
+	}
+	public void Clicking() {
+		FirstButton.click();
+		waits();
+		SecondButton.click();
+		waits();
+		ThirdButton.click();
+		waits();
+		Location();
+		GetCSS();
+		waits();
+	}
+	
+	public void AllFunctions(String url) {
+		setUrl(url);
+		Clicking();
+		driver.close();
+	}
+	private void waits() {
+		try {
+			Thread.sleep(4000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+}

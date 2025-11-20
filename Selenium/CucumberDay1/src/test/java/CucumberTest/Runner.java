@@ -1,0 +1,10 @@
+package CucumberTest;
+import io.cucumber.testng.AbstractTestNGCucumberTests;
+import io.cucumber.testng.CucumberOptions;
+ 
+
+@CucumberOptions(features = {"src/test/resources/LoginTest.feature"},glue = "CucumberTest",
+plugin = {"pretty","html:target/CucumberReport.html"})
+public class Runner extends AbstractTestNGCucumberTests {
+
+}

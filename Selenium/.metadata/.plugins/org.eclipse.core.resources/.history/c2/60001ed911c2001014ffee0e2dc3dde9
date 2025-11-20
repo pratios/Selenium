@@ -1,0 +1,59 @@
+import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.testng.annotations.Test;
+
+public class GenericTestNG {
+	
+public void Run(String ClassName, String MethodName, Object ...inputargs) {
+		
+		Class<?>params[]= new Class[inputargs.length];
+		
+		for(int i=0; i<inputargs.length; i++) {
+			if(inputargs[i] instanceof String) {
+				params[i] = String.class;
+			}
+		}
+		
+		try {
+			Class<?> cls = Class.forName(ClassName);
+			Object obj = cls.newInstance();
+			Method m = cls.getDeclaredMethod(MethodName, params);
+			m.invoke(obj, inputargs);
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println("Exception in generic class : "+e.getMessage());
+		}
+			
+	}
+
+  @Test
+  public void LoginTest() {
+	  
+	  ReadExcel r = new ReadExcel("C:\\Users\\Pratiksha\\Documents\\Selenium\\Keywords\\CIITStudentKeywords.xlsx", "Sheet1");
+	  int lastRow = r.getLastRowNumber();
+	  System.out.println("Last row Number : "+lastRow);
+	  
+	  for(int i=1; i<=lastRow; i++) {
+		  String methodName = r.getCellValue(i, 0);
+		  System.out.println(methodName);
+		  
+		  List<Object> data = new ArrayList<>();
+		  
+		  for(int j=1; j<r.getLastColumnNumber(i); j++) {
+			  if(r.getCellValue(i, j) != null) {
+				  String d = r.getCellValue(i, j);
+				  System.out.println(d+" ");
+				  data.add(d);
+			  }
+		  }
+		  
+		  Object []lst = new String[data.size()];
+			lst=data.toArray();
+			Run("KeywordsClass", methodName, lst);
+//		  System.out.println();
+	  }
+  }
+}

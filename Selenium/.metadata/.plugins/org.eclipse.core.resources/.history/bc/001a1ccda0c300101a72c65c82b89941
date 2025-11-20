@@ -1,0 +1,23 @@
+package mypackage;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Practice {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		List<Integer> lst=new ArrayList<>();
+		lst.add(10);
+		lst.add(50);
+		lst.add(70);
+		lst.add(30);
+		lst.add(20);
+		lst.add(40);
+		Integer[]data=new Integer[lst.size()];
+		data=lst.toArray();
+		
+
+	}
+
+}

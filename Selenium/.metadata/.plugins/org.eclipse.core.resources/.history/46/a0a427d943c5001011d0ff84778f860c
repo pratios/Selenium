@@ -1,0 +1,7 @@
+Feature: Test
+Scenario: Student Login Test
+Given Open Browser And Enter Login url="https://ciitstudent.com/"
+Given Enter Email Address="yuvraj.gadadare@gmail.com"
+Given Enter Password="pp"
+When Click on login button
+Then It should show title="YuvrajGadadare"

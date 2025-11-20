@@ -1,0 +1,78 @@
+package Programs2;
+import static org.testng.Assert.assertEquals;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+public class PGVideoPlay {
+
+WebDriver driver;
+	
+	@FindBy(id="email_address")
+	WebElement eemail;
+	
+	@FindBy(id="password")
+	WebElement epass;
+	
+	@FindBy(xpath="//*[@type='submit']")
+	WebElement ebtn;
+	
+	@FindBy(xpath="//*[@href='/VideoTest/Index']")
+	WebElement ebtn2;
+	
+	@FindBy(xpath="//*[@class=\"main-body\"]/div/div[2]/div/div/div[3]/div/ul/li[3]/a")
+	WebElement vidbtn;
+	
+	@FindBy(xpath="//*[@class='main-body']/div/div/div/div/div/div/div")
+	WebElement euser;
+	
+	public PGVideoPlay(WebDriver driver) {
+		// TODO Auto-generated constructor stub
+		this.driver=driver;
+		PageFactory.initElements(this.driver, this); //this.driver makes all webelements use the memory of driver(which will come from testNG class)
+	}
+	
+	public void setUrl(String url) {
+		driver.get(url);
+		driver.manage().window().maximize();
+	}
+	
+	public void setEmail(String eml) {
+		eemail.sendKeys(eml);
+		
+	}
+	public void setPass(String pas) {
+		epass.sendKeys(pas);
+	}
+	public void clickButton() {
+		ebtn.click();
+	}
+	public void clickMenu() {
+		ebtn2.click();
+	}
+	public void setUserName(String expected) {
+		String actual_name = euser.getText();
+		assertEquals( actual_name,expected);;
+	}
+	
+	public void allFunctions(String url,String em, String ps, String usr) {
+		setUrl(url);
+		setEmail(em);		
+		setPass(ps);
+		clickButton();
+		clickMenu();
+		waits();
+		setUserName(usr);
+//		driver.close();
+	}
+	
+	private void waits() {
+		try {
+			Thread.sleep(4000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+}

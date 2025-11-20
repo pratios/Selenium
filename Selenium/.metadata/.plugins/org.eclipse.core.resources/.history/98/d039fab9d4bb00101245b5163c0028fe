@@ -1,0 +1,26 @@
+package SeleniumFirstPackage;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class ElementHandling {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		WebDriver driver = new ChromeDriver();
+		driver.get("https://gmail.com");
+		driver.manage().window().maximize();
+		
+		WebElement e = driver.findElement(By.name("identifier"));
+		e.sendKeys("abc@gmail.com");
+		WebElement p = driver.findElement(By.xpath("//*/body/div[2]/div/div/div[2]/c-wiz/main/div[3]/div/div/div/div/button"));
+		p.click();
+//		
+//		WebElement b = driver.findElement(By.xpath("//*[@type='submit']"));
+//		b.click();
+	}
+
+}

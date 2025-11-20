@@ -1,0 +1,52 @@
+package QAPlayGround;
+
+import org.testng.annotations.Test;
+import org.testng.annotations.BeforeTest;
+
+import java.awt.Desktop.Action;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+import org.testng.annotations.AfterTest;
+
+public class ActionClass {
+	
+	WebDriver driver = new ChromeDriver();
+	
+	@BeforeTest
+	  public void beforeTest() {
+		driver.get("https://www.browserstack.com/");
+	  }
+  @Test(priority =1)
+  public void ActionClick() {
+	  
+	  Actions action = new Actions(driver);
+	  WebElement e = driver.findElement(By.linkText("Get started free"));
+	  action.moveToElement(e).click();
+  }
+  @Test(priority =1)
+  public void ActionClickWebElement() {
+	  
+	  Actions action = new Actions(driver);
+	  WebElement e = driver.findElement(By.linkText("Get started free"));
+	  action.moveToElement(e).click().perform();
+  }
+ 
+
+  @AfterTest
+  public void afterTest() {
+	  waits();
+	  driver.close();
+  }
+
+  public void waits() {
+	  try {
+		Thread.sleep(3000);
+	} catch (Exception e) {
+		// TODO: handle exception
+	}
+  }
+}

@@ -1,0 +1,3 @@
+Feature: Test
+Scenario: Student Login Test
+Given Open Browser And Enter Login url

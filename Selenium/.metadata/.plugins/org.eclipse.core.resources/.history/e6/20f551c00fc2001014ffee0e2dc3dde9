@@ -1,0 +1,81 @@
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+public class KeywordsClass {
+
+	static WebDriver driver;
+	
+	public KeywordsClass(WebDriver driver) {
+		this.driver = driver;
+	}
+	
+	public WebElement getElement(String LocatorType, String LocatorValue) {
+		By by;
+		switch(LocatorType) {
+		
+		case "id":{
+			by = By.id(LocatorValue);
+		}
+		case "class":{
+			by = By.id(LocatorValue);
+		}
+		case "href":{
+			by = By.id(LocatorValue);
+		}
+		case "xpath":{
+			by = By.id(LocatorValue);
+		}
+		case "classname":{
+			by = By.id(LocatorValue);
+		}
+		case "name":{
+			by = By.id(LocatorValue);
+		}
+		default:{
+			by = null;
+		}
+		}
+		WebElement e = driver.findElement(by);
+		return e;
+	}
+	
+	public void openBrowser(String url) {
+		driver.get(url);
+		driver.manage().window().maximize();
+	}
+	
+	public void editText(String LocatorType, String LocatorValue, String data) {
+		WebElement e = getElement(LocatorType, LocatorValue);
+		e.sendKeys(data);
+	}
+	public void editTextWait(String LocatorType, String LocatorValue, String data) {
+		waits();
+		WebElement e = getElement(LocatorType, LocatorValue);
+		e.sendKeys(data);
+	}
+	
+	public void clickButton(String LocatorType, String LocatorValue) {
+		WebElement e = getElement(LocatorType, LocatorValue);
+		e.click();
+	}
+	
+	public void clickButtonWait(String LocatorType, String LocatorValue) {
+		waits();
+		WebElement e = getElement(LocatorType, LocatorValue);
+		e.click();
+	}
+	
+	public void closeBrowser() {
+		driver.close();
+	}
+	
+	public void waits(){
+		try {
+			Thread.sleep(4000);
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println(e.getMessage());
+		}
+	}
+}

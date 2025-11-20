@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="1" passed="0" failed="1" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2025-11-19T18:12:02 IST" name="Default suite" finished-at="2025-11-19T18:12:10 IST" duration-ms="7997">
+    <groups>
+      <group name="cucumber">
+        <method signature="AbstractTestNGCucumberTests.runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:CucumberTest.Runner@43c1b556]" name="runScenario" class="io.cucumber.testng.AbstractTestNGCucumberTests"/>
+      </group> <!-- cucumber -->
+    </groups>
+    <test started-at="2025-11-19T18:12:02 IST" name="Default test" finished-at="2025-11-19T18:12:10 IST" duration-ms="7997">
+      <class name="CucumberTest.Runner">
+        <test-method is-config="true" signature="setUpClass(org.testng.ITestContext)[pri:0, instance:CucumberTest.Runner@43c1b556]" started-at="2025-11-19T18:12:02 IST" name="setUpClass" finished-at="2025-11-19T18:12:02 IST" duration-ms="458" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[org.testng.TestRunner@ce9b9a9]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUpClass -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:CucumberTest.Runner@43c1b556]" started-at="2025-11-19T18:12:02 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2025-11-19T18:12:10 IST" duration-ms="7471" status="FAIL">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Student Login Test"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Test"]]>
+              </value>
+            </param>
+          </params>
+          <exception class="io.cucumber.testng.UndefinedStepException">
+            <message>
+              <![CDATA[The step 'Enter Password="pp"' and 2 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given("Enter Password={string}")
+public void enter_password(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("Click on login button")
+public void click_on_login_button() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("It should show title={string}")
+public void it_should_show_title(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[io.cucumber.testng.UndefinedStepException: The step 'Enter Password="pp"' and 2 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given("Enter Password={string}")
+public void enter_password(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("Click on login button")
+public void click_on_login_button() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("It should show title={string}")
+public void it_should_show_title(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+at ✽.Enter Password="pp"(file:///C:/Users/Pratiksha/Documents/Selenium/CucumberDay1/src/test/resources/LoginTest.feature:5)
+]]>
+            </full-stacktrace>
+          </exception> <!-- io.cucumber.testng.UndefinedStepException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:CucumberTest.Runner@43c1b556]" started-at="2025-11-19T18:12:10 IST" name="tearDownClass" finished-at="2025-11-19T18:12:10 IST" duration-ms="19" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDownClass -->
+      </class> <!-- CucumberTest.Runner -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>

@@ -1,0 +1,4 @@
+Feature: Test
+Scenario: Student Login Test
+Given Open Browser And Enter Login url="https://ciitstudent.com/"
+Given Enter Email Address="yuvraj.gadadare@gmail.com"
